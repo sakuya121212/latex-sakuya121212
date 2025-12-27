@@ -16,23 +16,8 @@ fi
 
 mkdir -p "$DIR"
 
-cat << EOF > "$DIR/$NAME.tex"
-\\documentclass[a4paper,11pt]{article}
-
-\\usepackage{amsmath,amssymb}
-
-\\title{$NAME}
-\\author{}
-\\date{\\today}
-
-\\begin{document}
-\\maketitle
-
-\\section{Introduction}
-
-Hello, LaTeX!
-
-\\end{document}
-EOF
+# テンプレートファイルをコピーして置換
+cp projects/templates/template.tex "$DIR/$NAME.tex"
+sed -i "s/{{NAME}}/$NAME/g" "$DIR/$NAME.tex"
 
 echo "プロジェクトを作成しました: $DIR"
