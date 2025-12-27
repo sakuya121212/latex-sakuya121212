@@ -77,3 +77,9 @@ cp "projects/templates/$ENGINE_NAME/.latexmkrc" "$DIR/.latexmkrc"
 sed -i "s/{{NAME}}/$NAME/g" "$DIR/$NAME.tex"
 
 echo "プロジェクトを作成しました: $DIR (エンジン: $ENGINE_NAME)"
+
+if command -v code >/dev/null 2>&1; then
+  code "$DIR/$NAME.tex"
+else
+  echo "警告: 'code' コマンドが見つからないため、ファイルを開けませんでした。"
+fi
