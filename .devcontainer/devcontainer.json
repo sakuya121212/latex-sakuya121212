@@ -3,7 +3,11 @@
     "image": "texlive/texlive:latest",
     "features": {
         "ghcr.io/devcontainers/features/common-utils:2": {},
-        "ghcr.io/devcontainers/features/git:1": {}
+        "ghcr.io/devcontainers/features/git:1": {},
+        "ghcr.io/devcontainers/features/python:1": {
+            "installTools": true,
+            "version": "3.11"
+        }
     },
     "mounts": [
         {
@@ -15,8 +19,10 @@
     "customizations": {
         "vscode": {
             "extensions": [
-                "James-Yu.latex-workshop"
+                "James-Yu.latex-workshop",
+                "ms-python.python"
             ]
         }
-    }
+    },
+    "postCreateCommand": "apt-get update && apt-get install -y poppler-utils && pip install pdf2image"
 }
